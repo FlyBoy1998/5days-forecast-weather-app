@@ -1,0 +1,14 @@
+@keyframes flash {
+  0% {
+    background-color: $color-dark-4;
+    box-shadow: 1.6rem 0 $color-dark-4, -1.6rem 0 $color-primary--light;
+  }
+  50% {
+    background-color: $color-primary--light;
+    box-shadow: 1.6rem 0 $color-dark-4, -1.6rem 0 $color-dark-4;
+  }
+  100% {
+    background-color: $color-dark-4;
+    box-shadow: 1.6rem 0 $color-primary--light, -1.6rem 0 $color-dark-4;
+  }
+}

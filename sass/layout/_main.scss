@@ -1,0 +1,298 @@
+.main {
+  display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-areas:
+    "summary today today today"
+    "summary today today today "
+    "forecast today today today"
+    "forecast hours hours hours";
+  grid-auto-columns: 1fr;
+  align-items: stretch;
+  row-gap: 3rem;
+  column-gap: 2.2rem;
+  width: 100%;
+
+  svg {
+    fill: $color-primary--light;
+  }
+
+  @include respond(tab-land) {
+    grid-template-areas:
+      "summary forecast"
+      "summary forecast"
+      "today today"
+      "today today"
+      "hours hours";
+  }
+
+  @include respond(phone) {
+    grid-template-areas:
+      "summary"
+      "forecast"
+      "today"
+      "hours";
+  }
+
+  & > * {
+    border-radius: 2rem;
+    padding: 3.2rem 3.6rem;
+    background-color: $color-dark-2;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-area: summary;
+
+    & > * {
+      gap: 1.2rem;
+    }
+
+    &--weather {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid $color-primary--dark;
+      flex: 1 1 auto;
+
+      &--title {
+        font-size: 2rem;
+        color: $color-primary;
+      }
+
+      &--temperature {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 500;
+        gap: 1.6rem;
+        font-size: 6.2rem;
+
+        svg {
+          width: 5rem;
+          height: 5rem;
+        }
+      }
+
+      &--visibility {
+        color: $color-primary--dark;
+      }
+    }
+
+    &--date-location {
+      display: flex;
+      flex-direction: column;
+      color: $color-primary--dark;
+      padding-top: 2rem;
+      flex: 1 0 auto;
+    }
+  }
+
+  &__forecast {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 0.5rem;
+    grid-area: forecast;
+
+    &--title {
+      grid-column: 1 / -1;
+      font-size: 2rem;
+    }
+
+    &--row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      grid-column: 1 / -1;
+      color: $color-primary--dark;
+      font-size: 1.4rem;
+
+      &-icon {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+
+        span {
+          font-size: 1.8rem;
+          color: $color-primary;
+        }
+
+        svg {
+          width: 4.6rem;
+          height: 4.6rem;
+        }
+      }
+    }
+  }
+
+  &__today {
+    display: grid;
+    grid-template-areas:
+      "title title title title"
+      "air-quality air-quality sunrise sunrise"
+      "air-quality air-quality sunrise sunrise"
+      "humidity pressure visibility-level feels-like";
+    grid-auto-columns: 1fr;
+    grid-template-rows: min-content repeat(3, auto);
+    // grid-column: 4 / -1;
+    // grid-row: 1 / 5;
+    grid-area: today;
+    row-gap: 2rem;
+    column-gap: 1.4rem;
+
+    @include respond(tab-land) {
+      grid-template-areas:
+        "title title"
+        "air-quality air-quality"
+        "sunrise sunrise"
+        "humidity pressure"
+        "visibility-level feels-like";
+      grid-template-rows: min-content repeat(4, auto);
+    }
+
+    & > *:not(:first-child) {
+      display: grid;
+      align-items: center;
+      grid-template-rows: min-content auto;
+      row-gap: 1rem;
+      background-color: $color-dark-3;
+      border-radius: 2rem;
+      padding: 1.4rem 2rem;
+    }
+
+    &--title {
+      font-size: 2rem;
+      grid-area: title;
+    }
+
+    h3 {
+      color: $color-primary--dark;
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+
+    &--air-quality {
+      grid-area: air-quality;
+
+      &--title {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        &--indicator {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $color-indicator-good;
+          border-radius: 1rem;
+          padding: 0 1em;
+          font-size: 1rem;
+          color: $color-dark-3;
+          font-weight: 600;
+        }
+      }
+    }
+
+    &--sunrise {
+      grid-area: sunrise;
+    }
+
+    &--humidity {
+      grid-area: humidity;
+    }
+
+    &--pressure {
+      grid-area: pressure;
+    }
+
+    &--visibility {
+      grid-area: visibility-level;
+    }
+
+    &--feels-like {
+      grid-area: feels-like;
+    }
+
+    &--details {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+
+      &--sunrise,
+      &--sunset {
+        display: flex;
+        align-items: center;
+        flex: 1 1 auto;
+      }
+
+      &--icon {
+        width: 4.6rem;
+        height: 4.6rem;
+      }
+
+      &--stats {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1 1 auto;
+
+        h4 {
+          color: $color-primary--dark;
+          font-size: 1.4rem;
+        }
+
+        p {
+          color: $color-primary--light;
+          font-size: 3.2rem;
+        }
+      }
+    }
+  }
+
+  &__hours {
+    grid-area: hours;
+    display: grid;
+    grid-template-rows: min-content auto;
+    gap: 1rem;
+
+    &--title {
+      font-size: 2rem;
+    }
+
+    &--forecast {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.4rem;
+      overflow-x: auto;
+
+      &--box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $color-dark-3;
+        border-radius: 1rem;
+        padding: 1.4rem 2.4rem;
+
+        &--time {
+          color: $color-primary--dark;
+          font-size: 1.4rem;
+          text-transform: uppercase;
+        }
+
+        &--icon {
+          width: 6rem;
+          height: 6rem;
+        }
+
+        &--temperature {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}

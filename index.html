@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <h1 class="navbar__logo">
+          <svg>
+            <use href="./imgs/icons.svg#icon-cloud"></use>
+          </svg>
+          <span>Weather App</span>
+        </h1>
+        <form class="navbar__search-form">
+          <div class="navbar__search-form--loader-container">
+            <span class="navbar__search-form--loader-container--loader"></span>
+          </div>
+          <input
+            type="text"
+            class="navbar__search-form--input"
+            placeholder="Search for a city..."
+            maxlength="25"
+            required
+          />
+          <button class="navbar__search-form--button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <ul class="navbar__search-form--results"></ul>
+        </form>
+        <button class="navbar__current-location">
+          <i class="fa-solid fa-location-crosshairs"></i> Current location
+        </button>
+        <button id="menu-btn" class="navbar__hamburger">
+          <span class="navbar__hamburger--top"></span>
+          <span class="navbar__hamburger--middle"></span>
+          <span class="navbar__hamburger--bottom"></span>
+        </button>
+      </nav>
+
+      <nav class="mobile-navbar hidden">
+        <form class="mobile-navbar__search-form">
+          <input
+            type="text"
+            class="mobile-navbar__search-form--input"
+            placeholder="Search for a city..."
+            required
+          />
+          <button class="mobile-navbar__search-form--button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+        <button class="mobile-navbar__current-location">
+          <i class="fa-solid fa-location-crosshairs"></i> Current location
+        </button>
+      </nav>
+
+      <main class="main">
+        <div class="main__summary">
+          <div class="main__summary--weather">
+            <h3 class="main__summary--weather--title">Now</h3>
+            <h2 class="main__summary--weather--temperature">
+              <span>22&#8451;</span>
+              <svg>
+                <use href="./imgs/icons.svg#icon-cloud-wind"></use>
+              </svg>
+            </h2>
+            <p class="main__summary--weather--visibility">Haze</p>
+          </div>
+          <div class="main__summary--date-location">
+            <p class="main__summary--date-location--date">
+              <i class="fa-regular fa-calendar"></i>&nbsp;
+              <span>Thursday 2, Mar</span>
+            </p>
+            <p class="main__summary--date-location--city">
+              <i class="fa-solid fa-location-dot"></i>&nbsp;
+              <span>London</span>
+            </p>
+          </div>
+        </div>
+        <div class="main__forecast">
+          <h2 class="main__forecast--title">5 Days Forecast</h2>
+          <div class="main__forecast--row">
+            <div class="main__forecast--row-icon">
+              <svg>
+                <use href="/imgs/icons.svg#icon-cloud-snow"></use>
+              </svg>
+              <span>7&#8451;</span>
+            </div>
+            <p class="main__forecast--row-date">2 mar</p>
+            <p class="main__forecast--row-week-day">Thursday</p>
+          </div>
+          <div class="main__forecast--row">
+            <div class="main__forecast--row-icon">
+              <svg>
+                <use href="/imgs/icons.svg#icon-cloud-lightning"></use>
+              </svg>
+              <span>7&#8451;</span>
+            </div>
+            <p class="main__forecast--row-date">2 mar</p>
+            <p class="main__forecast--row-week-day">Thursday</p>
+          </div>
+          <div class="main__forecast--row">
+            <div class="main__forecast--row-icon">
+              <svg>
+                <use href="/imgs/icons.svg#icon-cloud"></use>
+              </svg>
+              <span>7&#8451;</span>
+            </div>
+            <p class="main__forecast--row-date">2 mar</p>
+            <p class="main__forecast--row-week-day">Thursday</p>
+          </div>
+          <div class="main__forecast--row">
+            <div class="main__forecast--row-icon">
+              <svg>
+                <use href="/imgs/icons.svg#icon-cloud-rain"></use>
+              </svg>
+              <span>7&#8451;</span>
+            </div>
+            <p class="main__forecast--row-date">2 mar</p>
+            <p class="main__forecast--row-week-day">Thursday</p>
+          </div>
+          <div class="main__forecast--row">
+            <div class="main__forecast--row-icon">
+              <svg>
+                <use href="/imgs/icons.svg#icon-cloud-sun"></use>
+              </svg>
+              <span>7&#8451;</span>
+            </div>
+            <p class="main__forecast--row-date">2 mar</p>
+            <p class="main__forecast--row-week-day">Thursday</p>
+          </div>
+        </div>
+        <div class="main__today">
+          <h2 class="main__today--title">Today's Highlights</h2>
+          <div class="main__today--air-quality">
+            <h3 class="main__today--air-quality--title">
+              <span class="main__today--air-quality--title--text"
+                >Air Quality Index</span
+              ><span class="main__today--air-quality--title--indicator"
+                >Good</span
+              >
+            </h3>
+            <div class="main__today--details">
+              <svg class="main__today--details--icon">
+                <use href="./imgs/icons.svg#icon-wind"></use>
+              </svg>
+              <div class="main__today--details--stats">
+                <h4>PM25</h4>
+                <p>3.90</p>
+              </div>
+              <div class="main__today--details--stats">
+                <h4>SO2</h4>
+                <p>7.75</p>
+              </div>
+              <div class="main__today--details--stats">
+                <h4>NO2</h4>
+                <p>33.6</p>
+              </div>
+              <div class="main__today--details--stats">
+                <h4>O3</h4>
+                <p>38.6</p>
+              </div>
+            </div>
+          </div>
+          <div class="main__today--sunrise">
+            <h3>Sunrise & Sunset</h3>
+            <div class="main__today--details">
+              <div class="main__today--details--sunrise">
+                <svg class="main__today--details--icon">
+                  <use href="./imgs/icons.svg#icon-sun"></use>
+                </svg>
+                <div class="main__today--details--stats">
+                  <h4>Sunrise</h4>
+                  <p>6:46 AM</p>
+                </div>
+              </div>
+              <div class="main__today--details--sunset">
+                <svg class="main__today--details--icon">
+                  <use href="./imgs/icons.svg#icon-moon"></use>
+                </svg>
+                <div class="main__today--details--stats">
+                  <h4>Sunset</h4>
+                  <p>5:39 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main__today--humidity">
+            <h3>Humidity</h3>
+            <div class="main__today--details">
+              <svg class="main__today--details--icon">
+                <use href="./imgs/icons.svg#icon-droplet"></use>
+              </svg>
+              <div class="main__today--details--stats">
+                <h4>PM25</h4>
+                <p>3.90</p>
+              </div>
+            </div>
+          </div>
+          <div class="main__today--pressure">
+            <h3>Pressure</h3>
+            <div class="main__today--details">
+              <svg class="main__today--details--icon">
+                <use href="./imgs/icons.svg#icon-waves"></use>
+              </svg>
+              <div class="main__today--details--stats">
+                <h4>PM25</h4>
+                <p>3.90</p>
+              </div>
+            </div>
+          </div>
+          <div class="main__today--visibility">
+            <h3>Visibility</h3>
+            <div class="main__today--details">
+              <svg class="main__today--details--icon">
+                <use href="./imgs/icons.svg#icon-eye"></use>
+              </svg>
+              <div class="main__today--details--stats">
+                <h4>PM25</h4>
+                <p>3.90</p>
+              </div>
+            </div>
+          </div>
+          <div class="main__today--feels-like">
+            <h3>Feels like</h3>
+            <div class="main__today--details">
+              <svg class="main__today--details--icon">
+                <use href="./imgs/icons.svg#icon-thermometer-quarter"></use>
+              </svg>
+              <div class="main__today--details--stats">
+                <h4>PM25</h4>
+                <p>3.90</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main__hours">
+          <h2 class="main__hours--title">Today at</h2>
+          <div class="main__hours--forecast">
+            <div class="main__hours--forecast--box">
+              <p class="main__hours--forecast--box--time">9 PM</p>
+              <svg class="main__hours--forecast--box--icon">
+                <use href="/imgs/icons.svg#icon-cloud"></use>
+              </svg>
+              <p class="main__hours--forecast--box--temperature">5&#8451;</p>
+            </div>
+            <div class="main__hours--forecast--box">
+              <p class="main__hours--forecast--box--time">9 PM</p>
+              <svg class="main__hours--forecast--box--icon">
+                <use href="/imgs/icons.svg#icon-cloud"></use>
+              </svg>
+              <p class="main__hours--forecast--box--temperature">5&#8451;</p>
+            </div>
+            <div class="main__hours--forecast--box">
+              <p class="main__hours--forecast--box--time">9 PM</p>
+              <svg class="main__hours--forecast--box--icon">
+                <use href="/imgs/icons.svg#icon-cloud"></use>
+              </svg>
+              <p class="main__hours--forecast--box--temperature">5&#8451;</p>
+            </div>
+            <div class="main__hours--forecast--box">
+              <p class="main__hours--forecast--box--time">9 PM</p>
+              <svg class="main__hours--forecast--box--icon">
+                <use href="/imgs/icons.svg#icon-cloud"></use>
+              </svg>
+              <p class="main__hours--forecast--box--temperature">5&#8451;</p>
+            </div>
+            <div class="main__hours--forecast--box">
+              <p class="main__hours--forecast--box--time">9 PM</p>
+              <svg class="main__hours--forecast--box--icon">
+                <use href="/imgs/icons.svg#icon-cloud"></use>
+              </svg>
+              <p class="main__hours--forecast--box--temperature">5&#8451;</p>
+            </div>
+            <div class="main__hours--forecast--box">
+              <p class="main__hours--forecast--box--time">9 PM</p>
+              <svg class="main__hours--forecast--box--icon">
+                <use href="/imgs/icons.svg#icon-cloud"></use>
+              </svg>
+              <p class="main__hours--forecast--box--temperature">5&#8451;</p>
+            </div>
+            <div class="main__hours--forecast--box">
+              <p class="main__hours--forecast--box--time">9 PM</p>
+              <svg class="main__hours--forecast--box--icon">
+                <use href="/imgs/icons.svg#icon-cloud"></use>
+              </svg>
+              <p class="main__hours--forecast--box--temperature">5&#8451;</p>
+            </div>
+            <div class="main__hours--forecast--box">
+              <p class="main__hours--forecast--box--time">9 PM</p>
+              <svg class="main__hours--forecast--box--icon">
+                <use href="/imgs/icons.svg#icon-cloud"></use>
+              </svg>
+              <p class="main__hours--forecast--box--temperature">5&#8451;</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- Script -->
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
